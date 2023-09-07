@@ -24,7 +24,7 @@ func main() {
 	}
 	defer file.Close()
 
-	// Si es que sí se pudo leer el archivo
+	// Si es que sí se pudo leer el archivo, imprimo línea por línea
     scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
         fmt.Println(scanner.Text())

@@ -13,4 +13,5 @@ go run ./0i-go-bases/main
 * **04-go-bases**: estructuras, métodos y composición.
 * **05-go-bases**: composición y punteros.
 * **06-go-bases**: errores.
+* **07-go-bases**: panic, defer y recover.
 
