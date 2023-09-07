@@ -5,44 +5,36 @@ import (
 	"errors"
 )
 
-var errorSalario error = fmt.Errorf("Error: el salario es menor a 10.000")
+type errorSalario struct {
+	mensaje string
+}
 
-// No usé struct 😟
-
-func checkSalary(salario int) error {
-	if salario <= 10000 {
-		return errorSalario
-	} else {
-		return nil
-	}
+func (e errorSalario) Error() string {
+	return e.mensaje
 }
 
 func main(){
 	fmt.Println("Ejercicio 2:")
 
-	salary1 := 100000
-	salary2 := 1000000
-	salary3 := 5000
+	salary1 := 5000
+	salary2 := 100000
 
-	err1 := checkSalary(salary1)
-	err2 := checkSalary(salary2)
-	err3 := checkSalary(salary3)
-
-	if errors.Is(err1, errorSalario) {
-		fmt.Println(err1)
+	if salary1 <= 10000 {
+		err := errorSalario{"Error: el salario es menor a 10.000"}
+		if errors.Is(err, errorSalario{"Error: el salario es menor a 10.000"}) {
+			fmt.Println(err.Error())
+		}
 	} else {
-		fmt.Println("Salario ok")
+		fmt.Println("Debe pagar")
 	}
 
-	if errors.Is(err2, errorSalario) {
-		fmt.Println(err2)
+	if salary2 <= 10000 {
+		err := errorSalario{"Error: el salario es menor a 10.000"}
+		if errors.Is(err, errorSalario{"Error: el salario es menor a 10.000"}) {
+			fmt.Println(err.Error())
+		}
 	} else {
-		fmt.Println("Salario ok")
+		fmt.Println("Debe pagar")
 	}
 
-	if errors.Is(err3, errorSalario) {
-		fmt.Println(err3)
-	} else {
-		fmt.Println("Salario ok")
-	}
 }
